@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My account</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Level Up</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<nav class="static-nav">
-	<ul>
-		<li>My Courses</li>
-		<li>My Dashboard</li>
-		<li>Log out</li>
+	
+<nav class="fixed-nav">
+	<img class="logo" src="https://i.pinimg.com/originals/86/3f/29/863f29f921b6e71f6872d0e0e05783db.png"/>
+	<ul class="nav-bar">
+		<li><a href="/">About</a></li>
+		<li><a href="/">My Account</a></li>
+		<li><a href="/">Log Out</a></li>
 	</ul>
 </nav>
+
 <main>
-	<div class="account-graph">
-	</div>
+	<section class="account">
+		<div class="account-graph">
+			<canvas class="chart-js col-12"></canvas>
+		</div>
+	</section>
 </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="account.js"></script>
+</body>
 </body>
 </html>
