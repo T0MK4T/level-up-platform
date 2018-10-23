@@ -8,8 +8,7 @@ const studentSchema = mongoose.Schema({
     firstName: String,
     lastName: String
   },
-  title: {type: String, required: true},
-  content: {type: String},
+  email: {type: String, required: true},
   created: {type: Date, default: Date.now}
 });
 
@@ -22,8 +21,7 @@ studentSchema.methods.serialize = function() {
   return {
     id: this._id,
     studentName: this.fullName,
-    content: this.content,
-    title: this.title,
+    email: this.email,
     created: this.created
   };
 };
