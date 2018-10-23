@@ -6,13 +6,14 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const { DATABASE_URL, PORT } = require('./config');
-const { Student,Course } = require('./models');
+const {router:studentRouter} = require('./student-router');
 
 const app = express();
 
+
 app.use(morgan('common'));
 app.use(express.json());
-
+app.use('/student',studentRouter);
 
 
 

@@ -1,0 +1,26 @@
+{
+  "name": "level-up-platform",
+  "version": "1.0.0",
+  "description": "thinkful capstone",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.6",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T0MK4T/level-up-platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/T0MK4T/level-up-platform/issues"
+  },
+  "homepage": "https://github.com/T0MK4T/level-up-platform#readme"
+}
