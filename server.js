@@ -3,16 +3,25 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
+
+const { router: studentRouter} = require('./students');
+const { router: courseRouter } = require('./courses');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+
 mongoose.Promise = global.Promise;
 
 const { DATABASE_URL, PORT } = require('./config');
-const {router:studentRouter} = require('./student-router');
 
 const app = express();
 
-
+//Logging
 app.use(morgan('common'));
-app.use(express.json());
+
+//CORS
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
 app.use('/student',studentRouter);
 
 
