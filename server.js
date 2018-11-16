@@ -5,13 +5,13 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const { router: studentRouter} = require('./students');
+const { router: studentRouter} = require('./students/router');
 const { router: courseRouter } = require('./courses');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 mongoose.Promise = global.Promise;
 
-const { DATABASE_URL, PORT } = require('./config');
+const { DATABASE_URL, PORT } = require('./config/config');
 
 const app = express();
 
@@ -22,7 +22,9 @@ app.use(morgan('common'));
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+app.use(express.static('./public'));
 app.use('/student',studentRouter);
+app.use('/auth',authRouter);
 
 
 
