@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const { router: studentRouter} = require('./students/router');
-const { router: courseRouter } = require('./courses');
+const { router: courseRouter } = require('./courses/router');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 mongoose.Promise = global.Promise;

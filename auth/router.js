@@ -7,9 +7,11 @@ const jwt = require('jsonwebtoken');
 const config = require('./../config/config');
 const router = express.Router();
 
+const jsonParser = bodyParser.json();
+
 const createAuthToken = function(student) {
 	return jwt.sign({student}, config.JWT_SECRET, {
-		subject: student.email,
+		subject: student.name,
 		expiresIn: config.JWT_EXPIRY,
 		algorithm: 'HS256'
 	});
@@ -17,15 +19,27 @@ const createAuthToken = function(student) {
 
 const localAuth = passport.authenticate('local', {session: false});
 router.use(bodyParser.json());
+
 router.post('/login',localAuth, (req, res) => {
 	const authToken = createAuthToken(req.student.serialize());
-	res.json({student: req.student, authToken: authToken});
+	res.json({authToken});
 });
 
 const jwtAuth = passport.authenticate('jwt', {session: false});
 
 router.post('/refresh', jwtAuth, (req, res) =>{
 	const authToken = createAuthToken(req.student);
+	res.json({authToken});
 });
+
+router.get('/api/protected', jwtAuth, (req, res) => {
+  console.log(req.student);
+
+  return res.json({
+    email: req.student.email,
+    name : req.student.name,
+  	});
+
+	});
 
 module.exports = {router};

@@ -5,10 +5,8 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const studentSchema = mongoose.Schema({
-  name: {
-    firstName: String,
-    lastName: String
-  },
+  firstName: String,
+  lastName: String,
   email: {type: String, required: true, unique: true},
   password: {type:String, required: true},
   created: {type: Date, default: Date.now}
@@ -30,9 +28,8 @@ studentSchema.statics.hashPassword = function(password){
 studentSchema.methods.serialize = function() {
   return {
     id: this._id,
-    studentName: this.fullName,
-    email: this.email,
-    created: this.created
+    name: this.fullName,
+    email: this.email
   };
 };
 
