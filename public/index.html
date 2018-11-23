@@ -18,6 +18,19 @@
 </nav>
 
 <main>
+	<form id="login-form">
+		<fieldset class="login-fields row">
+						<legend>Log-in</legend>
+						<div class="col-12">
+							<input id="username" type="text" name="username" placeholder ="email" required/>
+						</div>
+						<div class="col-12">
+							<input id="password" type="password" name="password" placeholder="password" required/>
+						</div>
+                        <button class="login-button" type="submit" name="submit">Login</button>
+					</fieldset>
+				<div class="error-message" hidden></div>
+	</form>
 
 	<section class="step-fade">
 		<div class="col-6">

@@ -32,7 +32,7 @@ router.post('/', jsonParser, (req, res) => {
   	});
   }
 
-  let { email, password} = req.body;
+  let { email, password, firstName, lastName} = req.body;
 
   return Student.find({email})
   	.then(count => {
@@ -49,11 +49,13 @@ router.post('/', jsonParser, (req, res) => {
   	.then(hash => {
   		return Student.create({
   			email,
+        firstName,
+        lastName,
   			password: hash
   		});
   	})
-  	.then(user=> {
-  		return res.status(201).json(user.serialize());
+  	.then(student=> {
+  		return res.status(201).json(student.serialize());
   	})
   	.catch(err =>{
   		console.log(err);
@@ -67,7 +69,28 @@ router.post('/', jsonParser, (req, res) => {
 
 
 router.delete('/', jsonParser, (req, res) => {
-  
+  let { email } = req.body;
+    console.log(email);
+
+    Student.findOne({email})
+        .then(student => {
+            console.log(student);
+            if(student != null && Object.keys(student).length > 0) {
+                Student.deleteOne(student)
+                    .then(res.status(202).json({message: 'Success'}))
+                    .catch(err => {
+                            console.log(err);
+                            res.status(500).json({message: 'Error deleting student'})
+                        })
+            }
+            else {
+                res.status(500).json({message: 'Student not found'});
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({message: 'Error in request'})
+        })
 });
 
 module.exports = {router};

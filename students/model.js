@@ -14,7 +14,7 @@ const studentSchema = mongoose.Schema({
 
 
 studentSchema.virtual('fullName').get(function() {
-  return `${this.name.firstName} ${this.name.lastName}`.trim();
+  return `${this.firstName} ${this.lastName}`.trim();
 });
 
 studentSchema.methods.validatePassword = function(password){

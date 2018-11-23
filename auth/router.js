@@ -21,7 +21,7 @@ const localAuth = passport.authenticate('local', {session: false});
 router.use(bodyParser.json());
 
 router.post('/login',localAuth, (req, res) => {
-	const authToken = createAuthToken(req.student.serialize());
+	const authToken = createAuthToken(req.user.serialize());
 	res.json({authToken});
 });
 
@@ -33,11 +33,11 @@ router.post('/refresh', jwtAuth, (req, res) =>{
 });
 
 router.get('/api/protected', jwtAuth, (req, res) => {
-  console.log(req.student);
+  console.log(req.user);
 
   return res.json({
-    email: req.student.email,
-    name : req.student.name,
+    email: req.user.email,
+    name : req.user.name,
   	});
 
 	});

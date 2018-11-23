@@ -16,6 +16,7 @@ courseSchema.methods.serialize = function(){
 		id: this._id,
 		title: this.title,
 		author: this.author,
+		category: this.category,
 		content: this.content,
 		created: this.created
 	};
