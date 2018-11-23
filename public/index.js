@@ -7,7 +7,7 @@ function logIn(){
 
         //has to be username and password for auth to work, even though username is email
         const user = {
-            username: $('#username').val(),
+            username: $('#email').val(),
             password: $('#password').val()
         };
         console.log("Logging in student");
@@ -31,4 +31,41 @@ function logIn(){
     })
 }
 
-$(logIn);
+
+function signUp () {
+    $('#signup-form').submit(event => {
+
+        event.preventDefault();
+
+        const info = {
+            email: $('#email-reg').val(),
+            password:$('#password-reg').val(),
+            confirmPassword: $('#confirm-password').val(),
+            firstName:$('#fName').val(),
+            lastName: $('#lName').val(),
+        };
+        console.log(info);
+
+        if(!(info.password == info.confirmPassword)) {
+            console.log(info);
+            //alert that passwords do not match
+        }
+        else {
+           $.ajax({
+               url : "/student",
+               dataType: "json",
+               type: 'POST',
+               contentType : "application/json",
+               data: JSON.stringify(info)
+            })
+               .then(console.log("sign up complete"))
+               .catch(console.log("sign up failed"))
+        }
+})};
+
+
+ function handlePageEvents(){
+ 	logIn();
+ 	signUp();
+ }
+ $(handlePageEvents)

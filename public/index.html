@@ -20,9 +20,9 @@
 <main>
 	<form id="login-form">
 		<fieldset class="login-fields row">
-						<legend>Log-in</legend>
+						<legend>Log In</legend>
 						<div class="col-12">
-							<input id="username" type="text" name="username" placeholder ="email" required/>
+							<input id="email" type="text" name="email" placeholder ="email" required/>
 						</div>
 						<div class="col-12">
 							<input id="password" type="password" name="password" placeholder="password" required/>
@@ -31,6 +31,27 @@
 					</fieldset>
 				<div class="error-message" hidden></div>
 	</form>
+	<form id="signup-form">
+                <fieldset>
+                    <legend>Student Sign Up</legend>
+                    <div class="col-6">
+                        <input type="text" id="email-reg" name="email-reg" placeholder = "Email" required/>
+                    </div>
+                    <div class="col-6">
+                        <input type="password" id="password-reg" name="password-reg" placeholder ="Create Password" required/>
+                    </div>
+                    <div class="col-6">
+                        <input type="password" id="confirm-password" placeholder = "Confirm Password" name="confirm-password"/>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="fName" name="fName" placeholder ="First Name" required/>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="lName" name="lName" placeholder = "Last Name" required/>
+                    </div>
+                    <button type="submit" class="submit-button">Sign Up</button>
+                </fieldset>
+    </form>
 
 	<section class="step-fade">
 		<div class="col-6">
