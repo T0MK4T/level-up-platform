@@ -11,6 +11,12 @@ const courseSchema = mongoose.Schema({
 	created: {type: Date, default: Date.now}
 });
 
+const sectionSchema = mongoose.Schema({
+	sectionNumber: {type: Number, required: true},
+	sectionType: {type: String, required: true},
+	courseID: {type: mongoose.Schema.ObjectId, ref: 'Course'}
+});
+
 courseSchema.methods.serialize = function(){
 	return {
 		id: this._id,
@@ -22,5 +28,18 @@ courseSchema.methods.serialize = function(){
 	};
 };
 
+
+sectionSchema.methods.serialize = function(){
+	return {
+		id: this._id,
+		courseID: this.courseID,
+		sectionNumber: this.sectionNumber,
+		sectionType: this.sectionType
+	};
+};
+
+
 const Course = mongoose.model('Course',courseSchema);
-module.exports = {Course};
+const Section = mongoose.model('Section',sectionSchema);
+
+module.exports = {Course, Section};
