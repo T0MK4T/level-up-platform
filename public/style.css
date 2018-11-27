@@ -39,7 +39,31 @@ li{
 	white-space: nowrap;
 	margin-right: 10px;
 }
-
+li:hover {
+	color:blue;
+}
+.enter-buttons{
+	width: 60%;
+	margin: 0 auto;
+}
+.login, .signup{
+	margin-bottom: 10px;
+	border-radius: 8px;
+	padding: 12px 28px;
+	width: 100%;
+	border: 1px #1FC256 solid;
+}
+.signup{
+	background-color: #1FC256;
+	color: white;
+}
+.signup:hover{
+	background-color: white;
+	color: #1FC256;
+}
+.login:hover{
+	color: #1FC256;
+}
 .graph-icon{
 	width: 100px;
 }
