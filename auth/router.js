@@ -37,7 +37,7 @@ router.get('/api/protected', jwtAuth, (req, res) => {
 
   return res.json({
     email: req.user.email,
-    name : req.user.name,
+    name: req.user.name,
   	});
 
 	});

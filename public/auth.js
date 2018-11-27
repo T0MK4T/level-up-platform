@@ -13,7 +13,7 @@ function userAuth () {
             Authorization: `Bearer ${token}`
         },
         success: function (data) {
-            $('.welcome-name').html('Hi ' + data.firstName);
+            $('.welcome-name').html('Hi ' + data.name);
         },
         error: function (request, error) {
             console.log("Request: " + JSON.stringify(request));

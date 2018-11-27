@@ -25,6 +25,7 @@ passport.use(jwtStrategy);
 app.use(express.static('./public'));
 app.use('/student',studentRouter);
 app.use('/auth',authRouter);
+//app.use('/cart',jwtStrategy,cartRouter);
 
 
 

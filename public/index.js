@@ -1,6 +1,6 @@
 'use strict';
 
-function logIn(){
+function logInListener(){
 	$('#login-form').submit(event => {
 
         event.preventDefault();
@@ -10,6 +10,11 @@ function logIn(){
             username: $('#email').val(),
             password: $('#password').val()
         };
+        logIn(user);
+	})
+}
+
+function logIn(user){
         console.log("Logging in student");
         $.ajax({
             url: "/auth/login",
@@ -28,7 +33,6 @@ function logIn(){
                 $('.error-message').html('<span class="notification-message">Username and/or Password is incorrect</span>');
                 $('.error-message').prop('hidden',false);
             })
-    })
 }
 
 
@@ -37,17 +41,17 @@ function signUp () {
 
         event.preventDefault();
 
-        const info = {
+        const signInfo = {
             email: $('#email-reg').val(),
-            password:$('#password-reg').val(),
+            password: $('#password-reg').val(),
             confirmPassword: $('#confirm-password').val(),
             firstName:$('#fName').val(),
             lastName: $('#lName').val(),
         };
-        console.log(info);
+        console.log(signInfo);
 
-        if(!(info.password == info.confirmPassword)) {
-            console.log(info);
+        if(!(signInfo.password == signInfo.confirmPassword)) {
+            console.log(signInfo);
             //alert that passwords do not match
         }
         else {
@@ -56,16 +60,24 @@ function signUp () {
                dataType: "json",
                type: 'POST',
                contentType : "application/json",
-               data: JSON.stringify(info)
+               data: JSON.stringify(signInfo)
             })
-               .then(console.log("sign up complete"))
-               .catch(console.log("sign up failed"))
+               .then(signInfo => {
+               	let user = {
+               		username: signInfo.email,
+               		password: $('#password-reg').val()
+               	};
+               	logIn(user);
+            })
+               .catch(err => {
+               		console.log("sign up failed");
+               	})
         }
 })};
 
 
  function handlePageEvents(){
- 	logIn();
+ 	logInListener();
  	signUp();
  }
  $(handlePageEvents)
