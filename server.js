@@ -28,6 +28,7 @@ const jwtAuth = passport.authenticate('jwt', {session: false});
 app.use(express.static('./public'));
 app.use('/student',studentRouter);
 app.use('/auth',authRouter);
+app.use('/course',jwtAuth,courseRouter);
 app.use('/cart',jwtAuth,cartRouter);
 
 

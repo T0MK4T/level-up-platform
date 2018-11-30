@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const { Course } = require('./models');
-const router = express.Router();
+const courseRouter = express.Router();
 const jsonParser = bodyParser.json();
 
-router.get('/', jsonParser,(req, res) => {
+courseRouter.get('/', jsonParser,(req, res) => {
   Course.findOne()
   	.then(course => res.json(course))
   	.catch(err => {
@@ -19,8 +19,8 @@ router.get('/', jsonParser,(req, res) => {
   	})
 });
 
-router.post('/', jsonParser, (req, res) => {
-  const requiredFields = ['title','author','category'];
+courseRouter.post('/', jsonParser, (req, res) => {
+  const requiredFields = ['title','author','category','content'];
   const missingFields = requiredFields.find(field => !(field in req.body));
 
   if(missingFields){
@@ -32,13 +32,14 @@ router.post('/', jsonParser, (req, res) => {
   	});
   }
 
-  let { title, author, category, content} = req.body;
+  let { title, img, author, category, content} = req.body;
   return Course.create({
   	title,
+    img,
   	author,
   	category,
   	content
   });
 });
 
-module.exports = {router};
+module.exports = {courseRouter};

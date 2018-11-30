@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const { Section } = require('./models');
-const router = express.Router();
+const sectionRouter = express.Router();
 const jsonParser = bodyParser.json();
 
-router.get('/', jsonParser,(req, res) => {
+sectionRouter.get('/', jsonParser,(req, res) => {
   Section.findOne()
   	.then(course => res.json(course))
   	.catch(err => {
@@ -19,7 +19,7 @@ router.get('/', jsonParser,(req, res) => {
   	})
 });
 
-router.post('/', jsonParser, (req, res) => {
+sectionRouter.post('/', jsonParser, (req, res) => {
   const requiredFields = ['title','author','category'];
   const missingFields = requiredFields.find(field => !(field in req.body));
 
@@ -41,4 +41,4 @@ router.post('/', jsonParser, (req, res) => {
   });
 });
 
-module.exports = {router};
+module.exports = {sectionRouter};

@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 
 const courseSchema = mongoose.Schema({
 	title: {type: String, required: true},
+	img: {type: String},
 	category: {type: String, required: true},
 	author: {type: String, required: true},
 	sections: {type: Array},
@@ -23,6 +24,7 @@ courseSchema.methods.serialize = function(){
 	return {
 		id: this._id,
 		title: this.title,
+		img: this.img,
 		author: this.author,
 		category: this.category,
 		created: this.created,
