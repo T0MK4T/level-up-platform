@@ -77,6 +77,38 @@ li:hover {
     padding-right: 7px;
     margin: 10px 0;
 }
+.course-grid{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+}
+.card{
+	width: 250px;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 1px 1px rgba(20,23,28,.1);
+}
+.card-img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.card-details{
+	padding: 10px 15px;
+}
+.card-title{
+
+}
+.card-category{
+
+}
+.card-description{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}

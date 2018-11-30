@@ -23,7 +23,24 @@ function createChart(){
 		});
 }
 
+function renderCourses(course){
+    return `
+            <div class='card'>
+            <img class='card-img' src="${course.img}">
+            <div class='card-details'>
+                <h2 class="card-title">${course.title}</h2>
+                <p class="card-category">${course.category}</p>
+                <p class="card-description">${course.description}</p>
+            </div>
+    `
+}
+
+function displayCourses(data){
+    const results = data.items.map 
+}
+
 function handlePage(){
 	createChart();
+    displayCourses();
 }
 $(handlePage);
