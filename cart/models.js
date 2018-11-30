@@ -19,6 +19,6 @@ cartSchema.methods.serialize = function(){
 
 
 
-const Cart = mongoose.model('Cart',courseSchema);
+const Cart = mongoose.model('Cart',cartSchema);
 
 module.exports = {Cart};

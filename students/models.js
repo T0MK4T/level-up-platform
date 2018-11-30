@@ -9,7 +9,8 @@ const studentSchema = mongoose.Schema({
   lastName: String,
   email: {type: String, required: true, unique: true},
   password: {type:String, required: true},
-  created: {type: Date, default: Date.now}
+  created: {type: Date, default: Date.now},
+  coursesOwned : {type: Array}
 });
 
 
@@ -29,7 +30,8 @@ studentSchema.methods.serialize = function() {
   return {
     id: this._id,
     name: this.fullName,
-    email: this.email
+    email: this.email,
+    coursesOwned: this.coursesOwned
   };
 };
 

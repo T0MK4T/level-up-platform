@@ -7,13 +7,15 @@ const courseSchema = mongoose.Schema({
 	title: {type: String, required: true},
 	category: {type: String, required: true},
 	author: {type: String, required: true},
-	content: {type: String},
-	created: {type: Date, default: Date.now}
+	sections: {type: Array},
+	created: {type: Date, default: Date.now},
+	active: {type: Boolean, default: true}
 });
 
 const sectionSchema = mongoose.Schema({
 	sectionNumber: {type: Number, required: true},
 	sectionType: {type: String, required: true},
+	content: {type: String},
 	courseID: {type: mongoose.Schema.ObjectId, ref: 'Course'}
 });
 
@@ -23,8 +25,8 @@ courseSchema.methods.serialize = function(){
 		title: this.title,
 		author: this.author,
 		category: this.category,
-		content: this.content,
-		created: this.created
+		created: this.created,
+		active: this.active
 	};
 };
 
@@ -34,7 +36,8 @@ sectionSchema.methods.serialize = function(){
 		id: this._id,
 		courseID: this.courseID,
 		sectionNumber: this.sectionNumber,
-		sectionType: this.sectionType
+		sectionType: this.sectionType,
+		content: this.content
 	};
 };
 

@@ -5,9 +5,10 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const { router: studentRouter} = require('./students/router');
-const { router: courseRouter } = require('./courses/router');
+const { router: studentRouter} = require('./students');
+const { router: courseRouter } = require('./courses');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { router: cartRouter } = require('./cart');
 
 mongoose.Promise = global.Promise;
 
@@ -22,10 +23,12 @@ app.use(morgan('common'));
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+const jwtAuth = passport.authenticate('jwt', {session: false});
+
 app.use(express.static('./public'));
 app.use('/student',studentRouter);
 app.use('/auth',authRouter);
-//app.use('/cart',jwtStrategy,cartRouter);
+app.use('/cart',jwtAuth,cartRouter);
 
 
 

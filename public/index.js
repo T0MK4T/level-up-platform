@@ -48,6 +48,7 @@ function signUp () {
             firstName:$('#fName').val(),
             lastName: $('#lName').val(),
         };
+        let curpass = signInfo.password;
         console.log(signInfo);
 
         if(!(signInfo.password == signInfo.confirmPassword)) {
@@ -65,7 +66,7 @@ function signUp () {
                .then(signInfo => {
                	let user = {
                		username: signInfo.email,
-               		password: $('#password-reg').val()
+               		password: curpass
                	};
                	logIn(user);
             })

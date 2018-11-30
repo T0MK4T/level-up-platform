@@ -6,12 +6,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
-const { Course } = require('./model');
+const { Section } = require('./models');
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
 router.get('/', jsonParser,(req, res) => {
-  Course.findOne()
+  Section.findOne()
   	.then(course => res.json(course))
   	.catch(err => {
   		console.log(err);
@@ -33,7 +33,7 @@ router.post('/', jsonParser, (req, res) => {
   }
 
   let { title, author, category, content} = req.body;
-  return Course.create({
+  return Section.create({
   	title,
   	author,
   	category,

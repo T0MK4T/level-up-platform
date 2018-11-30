@@ -1,5 +1,5 @@
 'use strict';
 const {Cart} = require('./models');
-const {router} = require('./router');
+const {router} = require('./cartRouter');
 
 module.exports = {Cart, router};
